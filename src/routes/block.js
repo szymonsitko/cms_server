@@ -1,33 +1,21 @@
 import express from 'express';
 
 import * as errors from '../constants/errors';
+import * as mocks from '../constants/mocks';
 
 let blockRouter = express.Router();
-
-const mock = [
-    {
-        id: 1,
-        name: 'Image Block',
-        content: '<div></div>'
-    },
-    {
-        id: 2,
-        name: 'Heading',
-        content: '<h1></h1>'
-    }
-]
 
 blockRouter.get('/blocks', (req, res) => {
     res
         .status(200)
-        .send(mock)
+        .send(mocks.MOCK)
         .end();
 });
 
 blockRouter.get('/blocks/:id', (req, res) => {
     res
         .status(200)
-        .send(mock.filter(each => Number(req.params.id) === each.id)[0])
+        .send(mocks.MOCK.filter(each => Number(req.params.id) === each.id)[0])
         .end()
 });
 
