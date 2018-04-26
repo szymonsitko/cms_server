@@ -14,11 +14,13 @@ describe('Testing suite for server responses', () => {
                 done();
             });
         });
-    
+    })
+
+    describe('Block route testing suite', () => {
         it('Should return requested block by ID', done => {
             request({
                 method: 'GET',
-                uri: 'http://localhost:3000/blocks/2'
+                uri: 'http://localhost:3000/block/2'
             }, function (error, response, body) {
                 expect(response.statusCode).toEqual(200);
                 expect(JSON.parse(body)).toEqual({
