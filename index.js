@@ -1,9 +1,9 @@
 import express from 'express';
-import blockRouter from './src/routes/block';
+import blocksRouter from './src/routes/blocks';
 
 const app = express();
 
-app.use('/', blockRouter);
+app.use('/', blocksRouter);
 
 app.get('*', (req, res) => {
     res
