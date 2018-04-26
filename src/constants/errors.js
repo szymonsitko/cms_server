@@ -1,0 +1,1 @@
+export const INVALID_METHOD = { error: 'This method is not allowed under requested endpoint' };
