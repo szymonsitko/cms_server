@@ -20,7 +20,8 @@ db.on('error', err => {
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/', [blocksRouter, blockRouter]);
+app.use('/', blocksRouter);
+app.use('/', blockRouter);
 
 app.get('*', (req, res) => {
     res

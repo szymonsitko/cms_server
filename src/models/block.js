@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-// Block schema
 let blockSchema = mongoose.Schema({
     name: {
         type: String,

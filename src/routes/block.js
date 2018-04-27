@@ -1,39 +1,53 @@
 import express from 'express';
-import Block from '../models/block';
+import { addBlock, queryBlockById } from '../controllers/block';
+import Block from '../controllers/block';
 
 import * as mocks from '../constants/mocks';
 import * as errors from '../constants/errors';
 
 let blockRouter = express.Router();
 
-blockRouter.post('/block', (req, res, next) => {
+blockRouter.post('/block', (req, res) => {
     const { name, content } = req.body;
 
-    let block = new Block();
-    block.name = name;
-    block.content = content;
-    
-    block.save((err) => {
+    addBlock(name, content, (err, block) => {
         if (err) {
-            console.log(err);
-            return;
+            res
+                .status(400)
+                .send({ error: err.message })
+                .end();
+        } else {
+            res
+                .status(200)
+                .send(block)
+                .end();
         }
-        res
-            .sendStatus(200)
-            .send({hello:'world'})
-            .end();
-
-        return;
     });
 });
 
-blockRouter.get('/block/:id', (req, res, next) => {
+blockRouter.get('/block/:id', (req, res) => {
+    const { id } = req.params;
+
+    queryBlockById(id, (err, block) => {
+        if (err) {
+            res
+                .status(422)
+                .send({ error: err.message })
+                .end();
+        } else {
+            res
+                .status(200)
+                .send(block)
+                .end();
+        }
+    });
+});
+
+blockRouter.post('/block/:id', (req, res) => {
     res
-        .sendStatus(200)
-        .send(mocks.MOCK.filter(each => Number(req.params.id) === each.id)[0])
+        .status(405)
+        .send({ error: 'This method is not allowed under this endpoint' })
         .end();
-    
-    next();
 });
 
 export default blockRouter;

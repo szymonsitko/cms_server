@@ -8,4 +8,11 @@ const addBlock = (name, content, callback) => {
     block.save(callback);
 }
 
-export default addBlock;
+const queryBlockById = (id, callback) => {
+    Block.find({ _id: id }, callback);
+}
+
+export {
+    addBlock,
+    queryBlockById
+}
