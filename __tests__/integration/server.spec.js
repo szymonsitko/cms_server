@@ -46,12 +46,14 @@ describe('Testing suite for server responses', () => {
                 method: 'GET',
                 uri: 'http://localhost:3000/blocks'
             }, function (error, response, body) {
+                let firstResult = Object.keys(JSON.parse(body)[0]);
+
                 expect(response.statusCode).toEqual(200);
 
-                expect(Object.keys(JSON.parse(body)[0])).toContain('_id');
-                expect(Object.keys(JSON.parse(body)[0])).toContain('name');
-                expect(Object.keys(JSON.parse(body)[0])).toContain('content');
-                expect(Object.keys(JSON.parse(body)[0])).toContain('__v');
+                expect(firstResult).toContain('_id');
+                expect(firstResult).toContain('name');
+                expect(firstResult).toContain('content');
+                expect(firstResult).toContain('__v');
     
                 done();
             });
