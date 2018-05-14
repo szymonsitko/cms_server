@@ -7,6 +7,7 @@
     "build": "npm run build:flow && npm run build:webpack && rm -rf _tmp",
     "build:flow": "babel src/ -d _tmp/",
     "build:webpack": "./node_modules/.bin/webpack-cli",
+    "build:dev": "babel src/ -d _tmp/ && nodemon _tmp/index.js",
     "start": "./node_modules/.bin/nodemon dist/bundle.js",
     "test": "./node_modules/.bin/jasmine"
   },
