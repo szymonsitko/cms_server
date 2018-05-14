@@ -1,9 +1,11 @@
+
+// @flow
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
-import blocksRouter from './src/routes/blocks';
-import blockRouter from './src/routes/block';
+import blocksRouter from './routes/blocks';
+import blockRouter from './routes/block';
 
 mongoose.connect('mongodb://localhost/');
 

@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack-cli",
-    "start": "./node_modules/.bin/nodemon dist/index.js",
+    "build": "npm run build:flow && npm run build:webpack && rm -rf _tmp",
+    "build:flow": "babel src/ -d _tmp/",
+    "build:webpack": "./node_modules/.bin/webpack-cli",
+    "start": "./node_modules/.bin/nodemon dist/bundle.js",
     "test": "./node_modules/.bin/jasmine"
   },
   "author": "Szymon Sitko",
@@ -20,9 +22,12 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.72.0",
     "jasmine": "^3.1.0",
     "nodemon": "^1.17.3",
     "request": "^2.85.0",
+    "rimraf": "^2.6.2",
     "tapable": "^1.0.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15"

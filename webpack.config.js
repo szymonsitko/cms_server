@@ -1,13 +1,13 @@
 const backend = {
     entry: [
-        './index.js'
+        './_tmp/index.js'
     ],
     output: {
-       filename: 'index.js'
+       filename: './index.js'
     },
     target: 'node',
     mode: 'development',
-    watch: true
+    watch: false
 };
 
 module.exports = [
